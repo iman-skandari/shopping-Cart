@@ -7,7 +7,7 @@ import ProductCard from "../components/ProductCard/ProductCard"
 const ProductList = () => {
   const products = useCart()
 
-  console.log("muuu:", useCart());
+  // console.log("muuu:", useCart());
   return (
     <>
       <div className="container mx-auto px-4 lg:px-8 pt-8">
@@ -17,7 +17,7 @@ const ProductList = () => {
           Featured gear({products.length} Items)
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-center
+        <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-center
         items-center ">
           {products.map((product, index) =>
             <ProductCard key={index} product={product} />
