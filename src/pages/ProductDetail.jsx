@@ -1,17 +1,20 @@
 import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import { initialProducts } from "../data/Product"
-import { ChevronLeft, Tag, Zap } from "lucide-react"
-
+import { ChevronLeft, ShoppingCart, Tag, Zap } from "lucide-react"
+import { useCart } from "../context/CartContext"
 
 const ProductDetail = () => {
 
   const { id } = useParams()
   const [product, setProduct] = useState(null)
 
+const {addToCart} = useCart()
+
   useEffect(() => {
 
     const foundProduct = initialProducts.find((data) => data.id == id);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setProduct(foundProduct);
   }, [id])
 
@@ -73,9 +76,21 @@ const ProductDetail = () => {
                 </span>
               </li>
             </ul>
+            <div className="mt-5 space-y-4 flex justify-center items-center flex-col">
+              <button onClick={()=>addToCart(product)}  className="w-full py-3 bg-orange-600 text-white font-bold rounded-full
+          shadow-lg shadow-orange-800/50 cursor-pointer hover:bg-orange-700 transition duration-300
+          flex items-center justify-center space-x-2 transform hover:ring-4 uppercase hover:ring-white-600 tracking-wider">
+                <ShoppingCart className="w-6 h-6" />
+                <span>Add To Cart</span>
+              </button>
+              <Link to={'/'} className="w-full py-3 border-2 border-orange-600 text-orange-400 font-bold
+               rounded-full cursor-pointer hover:bg-orange-900/50 transition duration-300
+               uppercase hover:ring-pink-600 tracking-wider text-center">
+                Keep Shopping
+              </Link>
+            </div>
           </div>
         </div>
-
       </div>
     </>
   )
