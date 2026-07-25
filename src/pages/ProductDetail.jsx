@@ -9,7 +9,7 @@ const ProductDetail = () => {
   const { id } = useParams()
   const [product, setProduct] = useState(null)
 
-const {addToCart} = useCart()
+  const { addToCart } = useCart()
 
   useEffect(() => {
 
@@ -77,9 +77,10 @@ const {addToCart} = useCart()
               </li>
             </ul>
             <div className="mt-5 space-y-4 flex justify-center items-center flex-col">
-              <button onClick={()=>addToCart(product)}  className="w-full py-3 bg-orange-600 text-white font-bold rounded-full
-          shadow-lg shadow-orange-800/50 cursor-pointer hover:bg-orange-700 transition duration-300
-          flex items-center justify-center space-x-2 transform hover:ring-4 uppercase hover:ring-white-600 tracking-wider">
+              <button onClick={() => addToCart(product)}
+                className="w-full py-3 bg-orange-600 text-white font-bold rounded-full
+                shadow-lg shadow-orange-800/50 cursor-pointer hover:bg-orange-700 transition duration-300
+                flex items-center justify-center space-x-2 transform hover:ring-4 uppercase hover:ring-white-600 tracking-wider">
                 <ShoppingCart className="w-6 h-6" />
                 <span>Add To Cart</span>
               </button>
