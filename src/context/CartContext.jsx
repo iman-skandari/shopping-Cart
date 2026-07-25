@@ -41,18 +41,20 @@ export const CartProvider = ({ children }) => {
     })
   }
   const clearCart = () => setCart([])
-  const cartCount = useMemo(() => cart.reduce((total, item) => total + item.quantity, 0), [cart])
+  const cartCount = useMemo(() =>
+    cart.reduce((total, item) => total + item.quantity, 0)
+    , [cart]);
 
-  const cartTotal = () => useMemo(() => cart.reduce((total, item) => total + item.price * item.quantity, 0)
-    , [cart]
-  );
+  const cartTotal = useMemo(() =>
+    cart.reduce((total, item) => total + (item.price * item.quantity), 0)
+    , [cart]);
 
   // console.log("gggg",cart);
-  
+
 
 
   return (
-    <CartContext.Provider value={{products,cart,addToCart,removeFromCart,clearCart,cartTotal,cartCount}}>
+    <CartContext.Provider value={{ products, cart, addToCart, removeFromCart, clearCart, cartTotal, cartCount }}>
       {children}
     </CartContext.Provider>
   )
