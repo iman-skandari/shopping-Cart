@@ -1,6 +1,6 @@
 import { Search } from "lucide-react";
 
-const SearchFilter = () => {
+const SearchFilter = ({search, setSearch}) => {
   return (
     <>
       <div className="mb-5 p-5 bg-gray-900 rounded-2xl shadow-xl border border-y-gray-800 ">
@@ -15,6 +15,8 @@ const SearchFilter = () => {
             className="w-full p-4 outline-none text-white bg-gray-800
           placeholder-gray-500 text-base font-medium"
           aria-label="Search Products"
+          value={search}
+          onChange={(e)=>setSearch(e.target.value)}
           />
         </div>
       </div>
